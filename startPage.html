@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link type="image/png" sizes="32x32" rel="icon" href="./img/icons8-users-32.png">
+    <style>
+        .element h5{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="users">
+    <h1>Users</h1>
+
+    <div id="usersBlock"></div>
+</div>
+
+
+<script>
+    const URL = 'https://jsonplaceholder.typicode.com/users/';
+
+    function usersAll(url) {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                usersFn(data);
+            })
+    }
+    usersAll(URL)
+
+    function usersFn(individs) {
+        let container = document.getElementById('usersBlock');
+        console.log(container);
+        container.innerHTML = '';
+
+        for (const individ of individs) {
+            let divForUser = document.createElement('div');
+            divForUser.classList.add('styleUser');
+
+            let h5 = document.createElement('h5');
+            h5.innerText = `${individ.id}. ${individ.name}`;
+
+            h5.addEventListener('click', ()=>{
+                location.href = 'userDetails.html?id='+ individ.id
+            })
+
+            divForUser.append(h5);
+            container.appendChild(divForUser);
+        }
+    }
+
+
+</script>
+</body>
+</html>
