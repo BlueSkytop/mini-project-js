@@ -2,44 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User details</title>
-    <link type="image/png" sizes="32x32" rel="icon" href="./img/icons8-users-32.png">
+    <title>User Details</title>
 </head>
 <body>
-<div>
-    <button style="width: 200px; height: 50px; "><a href="./startPage.html" style="text-decoration: none; color: #c54311;
-       font-size: 18px" >Back to list users</a></button>
-    <div id="userDetails"></div>
-</div>
-<h3><a href="startPage.html">Person</a></h3>
-<div id="btnBlock">
-    <button id="prevBtn">post of current user</button>
-</div>
+<div id="userDetails"></div>
+
 <script>
-   let userId = new URL(location.href).searchParams.get('id');
-   console.log(userId);
-   let baseURL = 'https://jsonplaceholder.typicode.com/users/'+userId;
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id');
+    const userDetailsElement = document.getElementById('userDetails');
 
-   fetch(baseURL)
-       .then(res => res.json())
-       .then(data => {
-           console.log(data);
+    // Функція для отримання деталей користувача
+    function getUserDetails() {
+        fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+            .then(response => response.json())
+            .then(user => {
+                // Виведення деталей користувача
+                userDetailsElement.innerHTML = `
+                    <h2>User Details</h2>
+                    <p>ID: ${user.id}</p>
+                    <p>Name: ${user.name}</p>
+                    <p>Username: ${user.username}</p>
+                    <p>Email: ${user.email}</p>
+                    <p>Address: ${JSON.stringify(user.address)}</p>
+                    <p>Phone: ${user.phone}</p>
+                    <p>Website: ${user.website}</p>
+                    <p>Company: ${JSON.stringify(user.company)}</p>
+                `;
 
-           let father = document.createElement('div')
-           document.body.appendChild(father)
-           for (const resultKey in data) {
-                   let div = document.createElement('div')
-                   father.appendChild(div)
-                   div.innerText = `${resultKey} - ${data[resultKey]}`
-               if (resultKey === 'address' || resultKey === 'company') {
-                   for (const key in data[resultKey]) {
-                       let p = document.createElement('p')
-                       father.appendChild(p)
-                       p.innerText  = `${key} - ${data[resultKey][key]}`
-                   }
-               }
-           }
-       })
+                // Додавання кнопки "Post of current user"
+                const postButton = document.createElement('button');
+                postButton.textContent = "Post of current user";
+                postButton.addEventListener('click', () => {
+                    getUserPosts();
+                });
+                userDetailsElement.appendChild(postButton);
+            });
+    }
+
+    // Функція для отримання постів користувача
+    function getUserPosts() {
+        fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+            .then(response => response.json())
+            .then(posts => {
+                // Виведення заголовків постів
+                userDetailsElement.innerHTML += '<h2>User Posts</h2>';
+                posts.forEach(post => {
+                    const postButton = document.createElement('button');
+                    postButton.textContent = post.title;
+                    postButton.addEventListener('click', () => {
+                        window.location.href = `postDetails.html?id=${post.id}`;
+                    });
+                    userDetailsElement.appendChild(postButton);
+                });
+            });
+    }
+
+    // Виклик функції для отримання деталей користувача
+    getUserDetails();
 </script>
 </body>
 </html>
+
