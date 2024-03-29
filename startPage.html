@@ -4,20 +4,15 @@
     <meta charset="UTF-8">
     <title>Users</title>
     <link type="image/png" sizes="32x32" rel="icon" href="./img/icons8-users-32.png">
-    <style>
-        .element h5{
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
 <div id="users">
+<div >
     <h1>Users</h1>
-
     <div id="usersBlock"></div>
 </div>
-
+</div>
 
 <script>
     const URL = 'https://jsonplaceholder.typicode.com/users/';
@@ -41,19 +36,26 @@
             let divForUser = document.createElement('div');
             divForUser.classList.add('styleUser');
 
-            let h5 = document.createElement('h5');
-            h5.innerText = `${individ.id}. ${individ.name}`;
+            let h4 = document.createElement('h4');
+            h4.innerText = `${individ.id}. ${individ.name}`;
+            h4.classList.add('h4Style')
 
-            h5.addEventListener('click', ()=>{
+
+            divForUser.append(h4);
+            container.appendChild(divForUser);
+
+            const button = document.createElement('button');
+            button.classList.add('userButton')
+            const b = document.createElement('b')
+            b.textContent = 'More details';
+            button.addEventListener('click', ()=>{
                 location.href = 'userDetails.html?id='+ individ.id
             })
-
-            divForUser.append(h5);
+            button.appendChild(b);
+            divForUser.appendChild(button);
             container.appendChild(divForUser);
         }
     }
-
-
 </script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+}
+.element h5{
+    cursor: pointer;
+}
+#users{
+    height: 100vh;
+    background-color: #ddf3dd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 4px solid #247a24;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#usersBlock{
+    border: 2px solid #416240;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.h4Style{
+    width: 80%; /* Кожен елемент займає половину ширини контейнера */
+    box-sizing: border-box; /* Щоб врахувати величину границь та поля */
+    padding: 5px;
+    margin: 10px 10px;
+    border: 2px solid #416240;
+    box-shadow: 10px 2px 20px rgba(0, 0, 0, 0.1);
+}
+.styleUser{
+    width: 150px;
+    height: 120px;
+    margin: 0;
+}
+.userButton{
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: #eee0b4;
+    justify-content: center;
+}
