@@ -19,25 +19,32 @@
         fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             .then(response => response.json())
             .then(user => {
+
                 // Виведення деталей користувача
                 userDetailsElement.innerHTML = `
-                    <h2>User Details</h2>
-                    <p>ID: ${user.id}</p>
-                    <p>Name: ${user.name}</p>
-                    <p>Username: ${user.username}</p>
-                    <p>Email: ${user.email}</p>
-                    <p>Address: ${JSON.stringify(user.address)}</p>
-                    <p>Phone: ${user.phone}</p>
-                    <p>Website: ${user.website}</p>
-                    <p>Company: ${JSON.stringify(user.company)}</p>
+                    <h1>User Details</h1>
+                    <div id = "divInfo">
+                    <div><p><h3>ID:</h3> ${user.id}</p></div>
+                    <div><p><h3>Name:</h3> ${user.name}</p></div>
+                    <div><p><h3>Username:</h3> ${user.username}</p></div>
+                    <div><p><h3>Email:</h3> ${user.email}</p></div>
+                    <div><p><h3>Address:</h3> ${JSON.stringify(user.address)}</p></div>
+                    <div><p><h3>Phone:</h3> ${user.phone}</p></div>
+                    <div><p><h3>Website:</h3> ${user.website}</p></div>
+                    <div><p><h3>Company:</h3> ${JSON.stringify(user.company)}</p></div>
+                    </div>
                 `;
 
                 // Додавання кнопки "Post of current user"
                 const postButton = document.createElement('button');
-                postButton.textContent = "Post of current user";
+                postButton.classList.add('buttonInfoUer')
+                const textButton = document.createElement('b')
+                textButton.textContent = "Post of current user";
                 postButton.addEventListener('click', () => {
                     getUserPosts();
                 });
+
+                postButton.appendChild(textButton)
                 userDetailsElement.appendChild(postButton);
             });
     }
@@ -48,9 +55,10 @@
             .then(response => response.json())
             .then(posts => {
                 // Виведення заголовків постів
-                userDetailsElement.innerHTML += '<h2>User Posts</h2>';
+                userDetailsElement.innerHTML += '<div class="userPost"><h1>User Posts</h1></div>';
                 posts.forEach(post => {
                     const postButton = document.createElement('button');
+                    postButton.classList.add('post5')
                     postButton.textContent = post.title;
                     postButton.addEventListener('click', () => {
                         window.location.href = `postDetails.html?id=${post.id}`;
