@@ -6,11 +6,11 @@ body{
 }
 #users{
     height: 100vh;
-    background-color: #ddf3dd;
+    background-color: #cae1ca;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    border: 4px solid #247a24;
+    border: 5px solid #255b25;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -60,13 +60,13 @@ body{
     width: 12vw;
     height: 30vh;
     margin: 5px;
-    background-color: #333030;
+    background-color: #4d4646;
     text-align: center;
     display: block;
     word-wrap: break-word;
     color: white;
 }
-.buttonInfoUer{
+.buttonInfoUser{
     width: 90%;
     height: 40px;
     margin-top: 70px;
@@ -81,7 +81,49 @@ body{
 .post5{
     width: 20vw;
     border-radius: 25px;
-    background-color: #333030;
+    background-color: #4d4646;
     color: white;
     box-shadow: 10px 2px 20px rgba(0, 0, 0, 0.1);
+}
+.post5:hover{
+    background-color: #cb7611;
+    transition: 2s;
+}
+#postDetails{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5c7ce;
+    text-align: center;
+
+}
+#postInfo{
+    width: 100vw;
+    height: 25vh;
+    background-color: #f5c7ce;
+}
+#postInfo>h1, #postInfo>h3, #postInfo>p{
+    margin: 0;
+}
+.commPost{
+    width: 100vw;
+    height: 65vh;
+    background-color: #f5c7ce;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.blockComm{
+    width: 20%;
+    height: 220px;
+    margin: 5px;
+    background-color: darkgray;
+}
+.blockComm>h3{
+    margin-bottom: 0;
+}
+.blockComm>p{
+    margin: 0;
+}
+#commentsStyle{
+    margin: 0;
 }

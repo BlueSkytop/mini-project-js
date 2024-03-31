@@ -24,20 +24,20 @@
                 userDetailsElement.innerHTML = `
                     <h1>User Details</h1>
                     <div id = "divInfo">
-                    <div><p><h3>ID:</h3> ${user.id}</p></div>
-                    <div><p><h3>Name:</h3> ${user.name}</p></div>
-                    <div><p><h3>Username:</h3> ${user.username}</p></div>
-                    <div><p><h3>Email:</h3> ${user.email}</p></div>
-                    <div><p><h3>Address:</h3> ${JSON.stringify(user.address)}</p></div>
-                    <div><p><h3>Phone:</h3> ${user.phone}</p></div>
-                    <div><p><h3>Website:</h3> ${user.website}</p></div>
-                    <div><p><h3>Company:</h3> ${JSON.stringify(user.company)}</p></div>
+                    <div><h3>ID:</h3> <p>${user.id}</p></div>
+                    <div><h3>Name:</h3> <p>${user.name}</p></div>
+                    <div><h3>Username:</h3> <p>${user.username}</p></div>
+                    <div><h3>Email:</h3> <p>${user.email}</p></div>
+                    <div><h3>Address:</h3> <p>${JSON.stringify(user.address)}</p></div>
+                    <div><h3>Phone:</h3> <p>${user.phone}</p></div>
+                    <div><h3>Website:</h3> <p>${user.website}</p></div>
+                    <div><h3>Company:</h3> <p>${JSON.stringify(user.company)}</p></div>
                     </div>
                 `;
 
                 // Додавання кнопки "Post of current user"
                 const postButton = document.createElement('button');
-                postButton.classList.add('buttonInfoUer')
+                postButton.classList.add('buttonInfoUser')
                 const textButton = document.createElement('b')
                 textButton.textContent = "Post of current user";
                 postButton.addEventListener('click', () => {
